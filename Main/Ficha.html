@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style-ficha.css">
+    <title>Formulario Clínico</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Ficha Clínica</h1>
+        </div>
+
+        <div class="form-section">
+            <form>
+                <label for="ucm">UCM:
+                    <input type="checkbox" id="ucm" name="ucm">
+                </label>
+                <label for="seguro">Seguro MOK:
+                    <input type="checkbox" id="seguro" name="seguro">
+                </label>
+
+                <h3>Signos Vitales:</h3>
+                <label for="pa">P/A:
+                    <input type="text" id="pa" name="pa" placeholder="123 / 70 mmHg">
+                </label>
+                <label for="fc">F.C:
+                    <input type="text" id="fc" name="fc" placeholder="120 x'">
+                </label>
+                <label for="fr">F.R:
+                    <input type="text" id="fr" name="fr" placeholder="18 x'">
+                </label>
+                <label for="temp">Tº:
+                    <input type="text" id="temp" name="temp" placeholder="36,5 ºC">
+                </label>
+                <label for="sat">SatO2:
+                    <input type="text" id="sat" name="sat" placeholder="98 %">
+                </label>
+                <label for="hgt">HGT:
+                    <input type="text" id="hgt" name="hgt" placeholder="110 mg/dl">
+                </label>
+
+                <div class="checkbox-group">
+                    <span>MOTIVO DE CONSULTA </span>
+                    <div>
+                        <label class="checkbox-label">
+                            <input type="radio" id="enfermedad" name="motivo_consulta" value="enfermedad">Enfermedad
+                        </label>
+
+                        <label class="checkbox-label">
+                            <input type="radio" id="estres" name="motivo_consulta" value="estres"> Estrés
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="radio" id="accidente" name="motivo_consulta" value="accidente"> Accidente
+                        </label>
+                    </div>
+
+                </div>
+
+                <h3>Procedimiento:</h3>
+                <textarea rows="4"></textarea>
+
+                <div class="footer">
+                    <span>Fecha 26-05-2023 13:04 hrs</span>
+                </div>
+
+                <input type="submit" value="Enviar" class="submit-btn">
+            </form>
+        </div>
+
+        <div class="footer">
+            <img src="/img/Inacap_grande.png" alt="INACAP">
+        </div>
+    </div>
+
+</body>
+
+</html>

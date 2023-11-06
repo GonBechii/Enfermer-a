@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.header {
+    background: #ff0000;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+.form-section {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+.checkbox-group {
+    margin-top: 10px;
+}
+
+.checkbox-label {
+    display: inline-table;
+    width: 100px;
+}
+
+.footer {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    background: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+}
