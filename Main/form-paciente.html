@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="text-bg-danger p-3 display-4 text-center">Formulario Paciente</div>
+        <br>
+        <div class="card">
+            <div class="card-header">
+                Ingrese Datos:
+            </div>
+            <div class="card-body">
+                <form>
+                    <!-- Form group for Rut -->
+                    <div class="mb-3">
+                        <label for="rutInput" class="form-label">Rut</label>
+                        <input type="text" class="form-control" id="rutInput" placeholder="11111111-1">
+                    </div>
+
+                    <!-- Form group for Edad -->
+                    <div class="mb-3">
+                        <label for="edadInput" class="form-label">Edad</label>
+                        <input type="number" class="form-control" id="edadInput" placeholder="23">
+                    </div>
+
+                    <!-- Form group for Previsión -->
+                    <div class="mb-3">
+                        <label for="previsionSelect" class="form-label">Previsión</label>
+                        <select class="form-select" id="previsionSelect">
+                            <option>Particular</option>
+                            <option>Otra opción</option>
+                        </select>
+                    </div>
+
+                    <!-- Form group for Teléfono -->
+                    <div class="mb-3">
+                        <label for="telefonoInput" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefonoInput" placeholder="99999999">
+                    </div>
+
+                    <!-- Form group for Carrera/Semestre -->
+                    <div class="mb-3">
+                        <label for="carreraInput" class="form-label">Carrera/Semestre</label>
+                        <input type="text" class="form-control" id="carreraInput" placeholder="Especifíque Carrera">
+                    </div>
+
+                    <!-- Form group for Jornada -->
+                    <div class="mb-3">
+                        <label for="jornadaSelect" class="form-label">Jornada</label>
+                        <select class="form-select" id="jornadaSelect">
+                            <option>Diurna</option>
+                            <option>Vespertina</option>
+                        </select>
+                    </div>
+
+                    <!-- Form group for N° Emergencia -->
+                    <div class="mb-3">
+                        <label for="emergenciaInput" class="form-label">N° Emergencia</label>
+                        <input type="tel" class="form-control" id="emergenciaInput" placeholder="256566523">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
