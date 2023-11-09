@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Simple Search Form</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../AdminLTE-3.2.0/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="rutificador.html" class="brand-link">
+            <span class="brand-text font-weight-light">Enfermería Inacap</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="rutificador.html" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Buscar Paciente
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="metrics.html" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <h2 class="text-center display-4">Búsqueda paciente</h2>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-8 offset-md-2">
+                        <form action="simple-results.html">
+                            <div class="input-group">
+                                <input type="search" class="text-center form-control form-control-lg" placeholder="Buscar paciente por Rut">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="row">
+                                    <!-- Resultado después del formulario -->
+                                    <div class="d-flex p-3 justify-content-around align-items-center borderFormResult col-12">
+                                        <div class="col-3 text-center">13220341-4</div>
+                                        <div class="col-3 text-center">Álvarez Díaz Marcela Lourdes</div>
+                                        <div class="row">
+                                            <div class="d-flex justify-content-around">
+                                                <button type="button" class="btn btn-primary col-5 text-center">Editar Paciente</button>
+                                                <button type="button" class="btn btn-primary col-6 text-center">Nueva incidencia</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="row">
+                                    <!-- Resultado después del formulario -->
+                                    <div class="d-flex p-3 justify-content-around align-items-center borderFormResult col-12">
+                                        <div class="col-3 text-center">13220341-4</div>
+                                        <div class="col-3 text-center">Álvarez Díaz Marcela Lourdes</div>
+                                        <div class="row">
+                                            <div class="d-flex justify-content-around">
+                                                <button type="button" class="btn btn-primary col-5 text-center">Editar Paciente</button>
+                                                <button type="button" class="btn btn-primary col-6 text-center">Nueva incidencia</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes
+<script src="../AdminLTE-3.2.0/dist/js/demo.js"></script>-->
+</body>
+</html>
