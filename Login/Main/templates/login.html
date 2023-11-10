@@ -1,61 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Log in</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../Admin-LTE/css/style-general.css">
+    <title>Login</title>
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="../../index2.html"><b>Enfermería INACAP</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">Iniciar sesión en la app</p>
 
-            <form action="../../index3.html" method="post">
-                <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-            <!-- /.social-auth-links -->
-
-            <p class="mb-1 mt-2">
-                <a href="forgot-password.html">Olvidé mi contraseña</a>
-            </p>
-        </div>
-        <!-- /.login-card-body -->
+<body class="bodyColor">
+<div class="container">
+    <div class="info">
+        <h1>Sistema Enfermería Inacap</h1><span>Made with<i class="fa fa-heart"></i>
+                by<a href="#">Álvaro Luarte, Diego Aedo, Diego Gárate</a></span>
     </div>
 
     <footer class="main-footer">
@@ -64,13 +26,16 @@
     </footer>
 
 </div>
-<!-- /.login-box -->
+<div class="form">
+    <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg" /></div>
 
-<!-- jQuery -->
-<script src="../AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+    <form class="login-form">
+        <input type="text" placeholder="Usuario" />
+        <input type="password" placeholder="Contraseña" />
+        <button>login</button>
+        <p class="message">¿olvidó contraseña? <a href="#"> Recupere acá</a></p>
+    </form>
+</div>
 </body>
+
 </html>
