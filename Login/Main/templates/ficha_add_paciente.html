@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Simple Search Form</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../AdminLTE-3.2.0/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="rutificador.html" class="brand-link">
+            <span class="brand-text font-weight-light">Enfermería Inacap</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="rutificador.html" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Buscar Paciente
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="metrics.html" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row justify-content-center">
+                <div class="col-10 mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1>Ficha ingreso incidencia</h1>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Datos personales</h2>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputNames">Nombres</label>
+                                        <input type="text" class="form-control" id="inputNames" placeholder="Ingrese nombres">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="inputApellidos">Apellidos</label>
+                                        <input type="text" class="form-control" id="inputApellidos" placeholder="Ingrese Apellidos">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Fecha de nacimiento</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" placeholder="Ingrese día/mes/año" data-mask>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-0">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                                            <label class="custom-control-label" for="exampleCheck1">Confirmo que los datos ingresados aquí fueron entregados por la persona en cuestión.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+        </div>
+    </footer>
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes
+<script src="../AdminLTE-3.2.0/dist/js/demo.js"></script>-->
+</body>
+</html>
