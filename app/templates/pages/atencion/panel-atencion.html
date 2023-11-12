@@ -1,0 +1,104 @@
+{% extends 'panel.html' %}
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Atencion</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Panel</a></li>
+              <li class="breadcrumb-item active">Paciente</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="">
+
+
+            <section class="section-paciente">
+        
+                <div class="title-item">
+                    <h3 class="blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Atencion</h3>
+                </div>
+                
+                <div class="container">
+                    <div class="header-formulario mt-5 mb-5">
+                    </div>
+                    <div class="row mb-5 search-box">
+                        <form class="d-flex justify-content-around col-12 mb-3 mt-3 pt-3 pb-3" action="/search/atencion/" method="POST">
+                            {% csrf_token %}
+                            <input class="bg-white rounded col-6 text-center" type="text" id="id" name="id" placeholder="Ingrese ID" />
+                            <button type="submit" class="btn btn-primary px-5">Buscar</button>
+                        </form>
+                    </div>
+        
+                    <table class="table">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Rut</th>
+                              <th>Fecha Inicio</th>
+                              <th>Fecha Termino</th>
+                              <th>SBP</th>
+                              <th>DBP</th>
+                              <th>Temperatura</th>
+                              <th>Pulso</th>
+                              <th>SatO2</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for row in rows %}
+                          <tr>
+                              <td>{{row.id}}</td>
+                              <td>{{row.paciente.rut}}</td>
+                              <td>{{row.fechaInicio}}</td>
+                              <td>{{row.fechaTermino}}</td>
+                              <td>{{row.sbp}}</td>
+                              <td>{{row.dbp}}</td>
+                              <td>{{row.temperatura}}</td>
+                              <td>{{row.pulso}}</td>
+                              <td>{{row.saturacion}}</td>
+                              <td>
+                                  <div class="">
+                                      <a type="button" class="btn btn-primary col-5 text-center" href="/panel/atencion/{{row.id}}/edit">Editar</a>
+                                      <a type="button" class="btn btn-primary col-5 text-center">Eliminar</a>
+                                  </div>
+                              </td>
+                          {% endfor %}
+                          </tr>
+                      </tbody>
+                  </table>
+        
+                </div>
+        
+        
+            </section>
+
+
+
+
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+{% endblock %}
