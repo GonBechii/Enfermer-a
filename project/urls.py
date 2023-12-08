@@ -28,15 +28,15 @@ urlpatterns = [
     path('panel/practicante/', views.panelPracticante, name='panel-practicante'),
     path('search/practicante/', views.searchPracticante, name='search-practicante'),
     path('panel/practicante/add/', views.panelPracticanteAdd, name='panel-practicante-add'),
-    path('panel/practicante/<int:rut>/edit', views.panelPracticanteEdit, name='panel-practicante-edit'),
+    path('panel/practicante/<str:rut>/edit', views.panelPracticanteEdit, name='panel-practicante-edit'),
     #----- PACIENTE ----------#
     path('panel/paciente/', views.panelPaciente, name='panel-paciente'),
     path('search/paciente/', views.searchPaciente, name='search-paciente'),
     path('panel/paciente/add/', views.panelPacienteAdd, name='panel-paciente-add'),
-    path('panel/paciente/<int:rut>/edit', views.panelPacienteEdit, name='panel-paciente-edit'),
+    path('panel/paciente/<str:rut>/edit', views.panelPacienteEdit, name='panel-paciente-edit'),
     #----- ATENCIONES -------#
     path('panel/atencion/', views.panelAtencion, name='panel-atencion'),
     path('search/atencion/', views.searchAtencion, name='search-atencion'),
-    path('panel/atencion/<int:rut>/add', views.panelAtencionAdd, name='panel-atencion-add'),
+    path('panel/atencion/<str:rut>/add', views.panelAtencionAdd, name='panel-atencion-add'),
     path('panel/atencion/<int:id>/edit', views.panelAtencionEdit, name='panel-atencion-edit'),
 ]

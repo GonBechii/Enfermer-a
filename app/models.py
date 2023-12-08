@@ -7,6 +7,8 @@ class Practicante(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     direccion = models.CharField(max_length=50)
+    correoE = models.EmailField(max_length=50)
+    passW = models.CharField(max_length=50)
 
 class Paciente(models.Model):
     rut = models.CharField(primary_key=True, max_length=50)

@@ -51,7 +51,9 @@
                         <th>Rut</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Actions</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Password</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,14 +62,16 @@
                         <td>{{row.rut}}</td>
                         <td>{{row.nombre}}</td>
                         <td>{{row.apellido}}</td>
+                        <td>{{row.correoE}}</td>
+                        <td>{{row.passW}}</td>
                         <td>
-                            <div class="">
-                                <a type="button" class="btn btn-primary col-5 text-center">Editar</a>
+                            <div>
+                                <a href="{% url 'panel-practicante-edit' rut=row.rut %}" type="button" class="btn btn-primary col-5 text-center">Editar</a>
                                 <a type="button" class="btn btn-primary col-5 text-center">Deshabilitar</a>
                             </div>
                         </td>
-                    {% endfor %}
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 

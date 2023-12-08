@@ -50,6 +50,9 @@ def panelPracticanteAdd(request):
         if form.is_valid():
             form.save()
             return redirect('panel-practicante')
+        else:
+            # Render de error
+            return render(request, 'pages/practicante/panel-practicante-add.html', {'form': form})
     
 def panelPracticanteEdit(request, rut):
     user = Practicante.objects.get(pk=rut)
@@ -62,7 +65,8 @@ def panelPracticanteEdit(request, rut):
         if form.is_valid():
             form.save()
             return redirect('panel-practicante')
-        return render(request, 'pages/practicante/panel-practicante-edit.html',{
+        return render(request, 'pages/practicante/panel-practicante-edit.html',
+        {
             "user": user
         })
      

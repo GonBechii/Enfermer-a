@@ -4,7 +4,10 @@ from .models import Practicante, Paciente, Atencion
 class PracticanteForm(forms.ModelForm):
     class Meta:
         model = Practicante
-        fields = ['rut', 'nombre', 'apellido', 'direccion']
+        fields = ['rut', 'nombre', 'apellido', 'direccion', 'correoE', 'passW']
+        widgets = {
+            "passW": forms.PasswordInput(render_value=True)
+        }
 
 class PacienteForm(forms.ModelForm):
     class Meta:
