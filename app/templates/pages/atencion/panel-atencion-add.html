@@ -114,19 +114,19 @@
                                     <div class="row justify-content-around">
                                         <div class="col-4">
                                             <label class="col-4 form-check-label">
-                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="enfermedad">
+                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="Enfermedad">
                                                 Enfermedad
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="col-4 form-check-label">
-                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="estres">
+                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="Estres">
                                                 Estrés
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="col-4 form-check-label">
-                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="accidente">
+                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="Accidente">
                                                 Accidente
                                             </label>
                                         </div>
@@ -140,7 +140,21 @@
                                 <!-- textarea -->
                                 <div class="form-group">
                                     <label>Procedimiento aplicado</label>
-                                    <textarea class="form-control" rows="3" placeholder="Ej: Se le aplica al paciente..."></textarea>
+                                    <textarea name="procedimiento" class="form-control" rows="3" placeholder="Ej: Se le aplica al paciente..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="practicante">Practicante</label>
+                                    <select name="practicante" class="form-control">
+                                        <option value="" selected disabled>Seleccionar Practicante</option>
+                                        {% for practicante in practicantes %}
+                                            <option value="{{ practicante.rut }}">{{ practicante.nombre }} {{ practicante.apellido }}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
                         </div>

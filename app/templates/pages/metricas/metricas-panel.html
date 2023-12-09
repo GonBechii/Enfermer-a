@@ -36,10 +36,17 @@
 
                 <div class="container-fluid">
                     <div class="header-formulario mt-5 mb-5"></div>
-                    <h1>Test conteo de Practicantes</h1>
-                    <div>
-                        <p>La cantidad de practicantes es: {{ cantidad_practicantes }}</p>
+
+                    <!-- Gráfico como img -->
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="data:image/png;base64,{{ img_base64_motivo }}" alt="Gráfico de dona motivo" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <img src="data:image/png;base64,{{ img_base64_practicante  }}" alt="Gráfico de dona practicante" class="img-fluid">
+                        </div>
                     </div>
+
 
                 </div>
         

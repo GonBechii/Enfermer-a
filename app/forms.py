@@ -17,4 +17,4 @@ class PacienteForm(forms.ModelForm):
 class AtencionForm(forms.ModelForm):
     class Meta:
         model = Atencion
-        fields = ['sbp', 'dbp', 'pulso', 'temperatura', 'saturacion']
+        fields = ['sbp', 'dbp', 'pulso', 'temperatura', 'saturacion', 'motivo_consulta', 'practicante', 'terms', 'procedimiento']

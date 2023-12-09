@@ -4,6 +4,12 @@ from .models import Paciente, Practicante, Atencion
 from .forms import PacienteForm, PracticanteForm, AtencionForm
 import uuid 
 import datetime
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+from django.db.models import Count
 
 # Create your views here.
 def home(request):
@@ -139,9 +145,11 @@ def searchAtencion(request):
     
 def panelAtencionAdd(request, rut):
     paciente = Paciente.objects.get(pk=rut)
+    practicantes = Practicante.objects.all()
     if request.method == 'GET':
         return render(request, 'pages/atencion/panel-atencion-add.html', {
             'paciente': paciente,
+            'practicantes': practicantes,
             'error': 'El formulario es invalido'
         })
 
@@ -180,5 +188,99 @@ def panelAtencionEdit(request, id):
 
 def metricasPracticantes(request):
     if request.method == 'GET':
-        cantidad_practicantes = Practicante.objects.count()
-        return render(request, 'pages/metricas/metricas-practicantes.html', {'cantidad_practicantes': cantidad_practicantes})
+        # Obtener la cantidad de atenciones por motivo de consulta
+        atenciones_por_motivo = (
+            Atencion.objects
+                .values('motivo_consulta')
+                .annotate(cantidad=Count('id'))
+        )
+
+        #--Crea un gráfico de dona--#
+        motivos = [item['motivo_consulta'] for item in atenciones_por_motivo]
+        cantidad_atenciones = [item['cantidad'] for item in atenciones_por_motivo]
+
+        # Calcular el total de atenciones
+        total_atenciones = sum(cantidad_atenciones)
+
+        fig, ax = plt.subplots(figsize=(8, 8))  # Ajustar el tamaño del gráfico
+
+        wedges, texts, autotexts = ax.pie(
+            cantidad_atenciones,
+            autopct=lambda p: f'{int(p * total_atenciones / 100)} ({p:.1f}%)',
+            textprops=dict(color="black"),  # Cambiar el color de los números a negro
+            startangle=90,  # Ajustar el ángulo de inicio
+            pctdistance=1.2  # Ajustar la distancia de los porcentajes desde el centro
+        )
+
+        centre_circle = plt.Circle((0, 0), 0.70, fc='white')
+        fig = plt.gcf()
+        fig.gca().add_artist(centre_circle)
+
+        # Añadir etiquetas con números y total de atenciones
+        ax.text(0, 0, f'Total: {total_atenciones}\natenciones', ha='center', va='center', color='black', fontsize=12)
+
+        ax.legend(wedges, motivos, title='Motivo de Consulta', loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+
+        plt.title('Porcentaje de Atenciones por Motivo de Consulta')
+
+        plt.subplots_adjust(left=0.1, right=0.7, top=0.9, bottom=0.1)
+
+        # Guardar el gráfico de atenciones por motivo en un objeto BytesIO
+        img_data_motivo = BytesIO()
+        plt.savefig(img_data_motivo, format='png', bbox_inches='tight')
+        img_data_motivo.seek(0)
+        img_base64_motivo = base64.b64encode(img_data_motivo.read()).decode('utf-8')
+        plt.close()
+
+        # Obtener la cantidad de atenciones por practicante
+        atenciones_por_practicante = (
+            Atencion.objects
+                .values('practicante__nombre')
+                .annotate(cantidad=Count('id'))
+        )
+
+        #--Crea un gráfico de dona para cantidad de atenciones por practicante--#
+        practicantes = [item['practicante__nombre'] for item in atenciones_por_practicante]
+        cantidad_atenciones_practicante = [item['cantidad'] for item in atenciones_por_practicante]
+
+        fig, ax = plt.subplots(figsize=(8, 8))  # Ajustar el tamaño del gráfico
+
+        wedges, texts, autotexts = ax.pie(
+            cantidad_atenciones_practicante,
+            autopct=lambda p: f'{int(p * sum(cantidad_atenciones_practicante) / 100)} ({p:.1f}%)',
+            textprops=dict(color="black"),
+            startangle=90,
+            pctdistance=1.2
+        )
+
+        # Añadir un círculo en el centro para crear un agujero (dona)
+        centre_circle = plt.Circle((0, 0), 0.70, fc='white')
+        fig = plt.gcf()
+        fig.gca().add_artist(centre_circle)
+
+        # Añadir etiquetas con números y total de atenciones
+        ax.text(0, 0, f'Total: {sum(cantidad_atenciones_practicante)}\natenciones', ha='center', va='center',
+                color='black', fontsize=12)
+
+        ax.legend(wedges, practicantes, title='Practicantes', loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+
+        plt.title('Cantidad de Atenciones por Practicante')
+
+        plt.subplots_adjust(left=0.1, right=0.7, top=0.9, bottom=0.1)
+
+        # Guardar el gráfico en un objeto BytesIO
+        img_data_practicante = BytesIO()
+        plt.savefig(img_data_practicante, format='png', bbox_inches='tight')
+        img_data_practicante.seek(0)
+
+        # Convertir la imagen en base64 para mostrarla en el template
+        img_base64_practicante = base64.b64encode(img_data_practicante.read()).decode('utf-8')
+        plt.close()
+
+        return render(
+            request,
+            'pages/metricas/metricas-panel.html',
+            {'img_base64_motivo': img_base64_motivo, 'img_base64_practicante': img_base64_practicante}
+        )
+
+

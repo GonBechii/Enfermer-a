@@ -26,3 +26,7 @@ class Atencion(models.Model):
     pulso = models.IntegerField()
     temperatura = models.IntegerField()
     saturacion = models.IntegerField()
+    motivo_consulta = models.CharField(max_length=50, default='No motivo')
+    practicante = models.ForeignKey(Practicante, max_length=50, on_delete=models.CASCADE)
+    terms = models.BooleanField(default=False)
+    procedimiento = models.TextField(default="Procedimiento no registrado")

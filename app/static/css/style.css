@@ -136,4 +136,11 @@ textarea {
     width: 100%;
 }
 
+/* Control imagen */
+
+.controlSizeImg{
+    width: 100px;
+    height: auto;
+}
+
 
