@@ -131,11 +131,9 @@ def panelAtencion(request):
     
 def searchAtencion(request):
     if request.method == 'POST':
-        atencion = Atencion.objects.get(pk=request.POST['id'])
-
-        return render(request, 'pages/atencion/panel-atencion.html',{
-            'rows': [atencion]
-        })
+        rut = request.POST.get('rut')
+        atencion = Atencion.objects.filter(paciente__rut=rut)
+        return render(request, 'pages/atencion/panel-atencion.html', {'rows': atencion})
     else:
         return render(request, 'pages/atencion/panel-atencion.html')
     
@@ -178,5 +176,9 @@ def panelAtencionEdit(request, id):
             "atencion": atencion
         })
 
+#--------- Métricas -----------#
 
-
+def metricasPracticantes(request):
+    if request.method == 'GET':
+        cantidad_practicantes = Practicante.objects.count()
+        return render(request, 'pages/metricas/metricas-practicantes.html', {'cantidad_practicantes': cantidad_practicantes})

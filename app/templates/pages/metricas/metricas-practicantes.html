@@ -1,0 +1,60 @@
+{% extends 'panel.html' %}
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Métricas</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Panel</a></li>
+              <li class="breadcrumb-item active">Paciente</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+
+
+            <section class="section-paciente">
+        
+                <div class="title-item row">
+                    <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Métricas</h3>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="header-formulario mt-5 mb-5"></div>
+                    <h1>Test conteo de Practicantes</h1>
+                    <div>
+                        <p>La cantidad de practicantes es: {{ cantidad_practicantes }}</p>
+                    </div>
+
+                </div>
+        
+        
+            </section>
+
+
+
+
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+{% endblock %}

@@ -70,3 +70,70 @@ body{
     background: red;
 }
 
+/* Variantes color */
+
+.blancoLetra{
+    color: #f8f8f8;
+}
+
+/* Variantes Back */
+
+.bodyColor{
+    background-color: #EFEFEF;
+}
+
+.contrasteBlanco{
+    background-color: #f8f8f8;
+}
+
+.varianteBaseBackground{
+    background-color: #FF0000;
+}
+
+.varianteDosBackground{
+    background-color: #EC1312;
+}
+
+.varianteTresBackground{
+    background-color: #D92523;
+}
+
+.varianteCuatroBackground{
+    background-color: #D02E2C;
+}
+
+/* Propiedades botones */
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #ff0000 !important;
+    border: none !important;
+}
+
+/* Eliminar resize */
+
+.textareaRemove {
+    resize: none;
+}
+
+/* Header formats */
+
+.header-formulario {
+    background: #f8f8f8;
+    border-bottom: 2px solid #ff0000;
+}
+
+/* Form Result Format */
+
+.borderFormResult {
+    background: #f8f8f8;
+    border-bottom: 2px solid #ff0000;
+    border-top: 2px solid #ff0000;
+}
+
+/* Width para componentes */
+
+textarea {
+    width: 100%;
+}
+
+

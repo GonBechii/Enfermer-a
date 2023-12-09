@@ -39,4 +39,6 @@ urlpatterns = [
     path('search/atencion/', views.searchAtencion, name='search-atencion'),
     path('panel/atencion/<str:rut>/add', views.panelAtencionAdd, name='panel-atencion-add'),
     path('panel/atencion/<int:id>/edit', views.panelAtencionEdit, name='panel-atencion-edit'),
+    #----- Métricas -------#
+    path('panel/metricas/practicantes/', views.metricasPracticantes, name='panel-metricas')
 ]
