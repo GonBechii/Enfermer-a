@@ -35,12 +35,12 @@
                 
                 <form class="border border-teritian mx-3 p-3 bg-light" method="POST">
                     {% csrf_token %} 
-                    <div class="title-item row">
-                      <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center">Agregar Paciente</h3>
+                    <div class="title-item">
+                      <h3 class="">Agregar Paciente</h3>
                     </div>
                      <div class="mb-3" >
                        <label for="nombre" class="form-label">Nombre</label>
-                       <input type="text" class="form-control" id="nombre" name="nombre" >
+                       <input type="text" class="form-control" id="nombre" name="nombre">
                      </div>
                      <div class="mb-3" >
                        <label for="rut" class="form-label">Rut</label>
@@ -54,6 +54,7 @@
                        <label for="direccion" class="form-label">Direccion</label>
                        <input type="text" class="form-control" id="direccion" name="direccion" >
                      </div>
+
                      <!-- <div class="mb-3 form-check">
                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -63,10 +64,6 @@
          
                    </form>
       
-              </div>
-      
-        
-        
             </section>
 
 

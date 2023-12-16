@@ -1,20 +1,17 @@
 from django import forms
-from .models import Practicante, Paciente, Atencion
+from .models import User, Paciente, Atencion
 
-class PracticanteForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
-        model = Practicante
-        fields = ['rut', 'nombre', 'apellido', 'direccion', 'correoE', 'passW']
-        widgets = {
-            "passW": forms.PasswordInput(render_value=True)
-        }
+        model = User
+        fields = ['rut', 'nombre', 'apellido', 'direccion']
 
 class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
-        fields = ['rut', 'nombre', 'apellido', 'direccion']
+        fields = ['rut', 'nombre', 'apellido', 'direccion','habilitado']
 
 class AtencionForm(forms.ModelForm):
     class Meta:
         model = Atencion
-        fields = ['sbp', 'dbp', 'pulso', 'temperatura', 'saturacion', 'motivo_consulta', 'practicante', 'terms', 'procedimiento']
+        fields = ['sbp', 'dbp', 'pulso', 'temperatura', 'saturacion', 'procedimiento','practicante','razonIngreso']

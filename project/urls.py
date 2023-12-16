@@ -21,24 +21,26 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('signin/', views.signin, name='signin'),
-
+    path('', views.signin, name='signin'),
+    path('signout/', views.signout, name='signout'),
     #----- PRACTICANTE -------#
     path('panel/practicante/', views.panelPracticante, name='panel-practicante'),
     path('search/practicante/', views.searchPracticante, name='search-practicante'),
     path('panel/practicante/add/', views.panelPracticanteAdd, name='panel-practicante-add'),
-    path('panel/practicante/<str:rut>/edit', views.panelPracticanteEdit, name='panel-practicante-edit'),
+    path('panel/practicante/<int:rut>/edit', views.panelPracticanteEdit, name='panel-practicante-edit'),
+    path('panel/practicante/<str:rut>', views.panelPracticanteBloq, name='panel-practicante-bloq'),
     #----- PACIENTE ----------#
     path('panel/paciente/', views.panelPaciente, name='panel-paciente'),
     path('search/paciente/', views.searchPaciente, name='search-paciente'),
     path('panel/paciente/add/', views.panelPacienteAdd, name='panel-paciente-add'),
-    path('panel/paciente/<str:rut>/edit', views.panelPacienteEdit, name='panel-paciente-edit'),
+    path('panel/paciente/<int:rut>/edit', views.panelPacienteEdit, name='panel-paciente-edit'),
+    path('panel/paciente/<str:rut>', views.panelPacienteBloq, name='panel-paciente-bloq'),
     #----- ATENCIONES -------#
     path('panel/atencion/', views.panelAtencion, name='panel-atencion'),
     path('search/atencion/', views.searchAtencion, name='search-atencion'),
-    path('panel/atencion/<str:rut>/add', views.panelAtencionAdd, name='panel-atencion-add'),
+    path('panel/atencion/<int:rut>/add', views.panelAtencionAdd, name='panel-atencion-add'),
     path('panel/atencion/<int:id>/edit', views.panelAtencionEdit, name='panel-atencion-edit'),
-    #----- Métricas -------#
-    path('panel/metricas/practicantes/', views.metricasPracticantes, name='panel-metricas')
+    path('panel/atencion/<int:id>/delete', views.panelAtencionDelete, name='panel-atencion-delete'),
+    #----- METRICAS -------#
+    path('panel/metricas/', views.panelMetricas, name='panel-metricas'),
 ]

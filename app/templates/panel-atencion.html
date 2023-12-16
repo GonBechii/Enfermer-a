@@ -23,23 +23,23 @@
             <a href="/panel/practicante/">Practicante</a>
             <a href="/panel/paciente/">Paciente</a>
             <a href="/panel/atencion/">Atenciones</a>
-            <a href="/panel/metricas/practicantes">Metricas</a>
+            <a href="">Metricas</a>
         </div>
     </section>
 
     <section class="section-paciente">
         
-        <div class="title-item row">
-            <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Atenciones</h3>
+        <div class="title-item">
+            <h3 class="blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Atenciones</h3>
         </div>
         
         <div class="container">
             <div class="header-formulario mt-5 mb-5">
             </div>
             <div class="row mb-5 search-box">
-                <form class="d-flex justify-content-around col-12 mb-3 mt-3 pt-3 pb-3" action="{% url 'search-atencion' %}" method="POST">
+                <form class="d-flex justify-content-around col-12 mb-3 mt-3 pt-3 pb-3" action="/search/atencion/" method="POST">
                     {% csrf_token %}
-                    <input class="bg-white rounded col-6 text-center" type="text" id="rut" name="rut" placeholder="Ingrese Rut" />
+                    <input class="bg-white rounded col-6 text-center" type="text" id="id" name="id" placeholder="Ingrese ID" />
                     <button type="submit" class="btn btn-primary px-5">Buscar</button>
                 </form>
             </div>
@@ -56,7 +56,6 @@
                         <th>Temperatura</th>
                         <th>Pulso</th>
                         <th>SatO2</th>
-                        <th>Motivo</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -71,7 +70,6 @@
                         <td>{{row.pulso}}</td>
                         <td>{{row.temperatura}}</td>
                         <td>{{row.saturacion}}</td>
-                        <td>{{row.motivo_consulta}}</td>
                         <td>
                             <div class="">
                                 <a type="button" class="btn btn-primary col-5 text-center">Editar</a>

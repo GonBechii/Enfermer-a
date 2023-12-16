@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Practicante</h1>
+
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,8 +31,8 @@
 
             <section class="section-paciente">
         
-                <div class="title-item row">
-                    <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Practicante</h3>
+                <div class="title-item">
+                    <h3 class="" for="rutificador">Practicante</h3>
                 </div>
                 
                 <form method="POST">
@@ -88,14 +88,13 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label>Fecha de de ingreso</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" placeholder="Ingrese día/mes/año" data-mask="">
-                                    </div>
-                                    <!-- /.input group -->
+                                    <label for="practicante">Practicante</label>
+                                    <select name="practicante" class="form-control">
+                                        <option value="" selected disabled>Seleccionar Practicante</option>
+                                        {% for practicante in practicantes %}
+                                            <option value="{{ practicante.rut }}">{{ practicante.nombre }} {{ practicante.apellido }}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -114,19 +113,19 @@
                                     <div class="row justify-content-around">
                                         <div class="col-4">
                                             <label class="col-4 form-check-label">
-                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="Enfermedad">
+                                                <input class="form-check-input" type="radio" name="razonIngreso" value="enfermedad">
                                                 Enfermedad
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="col-4 form-check-label">
-                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="Estres">
+                                                <input class="form-check-input" type="radio" name="razonIngreso" value="estres">
                                                 Estrés
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="col-4 form-check-label">
-                                                <input class="form-check-input" type="radio" name="motivo_consulta" value="Accidente">
+                                                <input class="form-check-input" type="radio" name="razonIngreso" value="accidente">
                                                 Accidente
                                             </label>
                                         </div>
@@ -140,21 +139,7 @@
                                 <!-- textarea -->
                                 <div class="form-group">
                                     <label>Procedimiento aplicado</label>
-                                    <textarea name="procedimiento" class="form-control" rows="3" placeholder="Ej: Se le aplica al paciente..."></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="practicante">Practicante</label>
-                                    <select name="practicante" class="form-control">
-                                        <option value="" selected disabled>Seleccionar Practicante</option>
-                                        {% for practicante in practicantes %}
-                                            <option value="{{ practicante.rut }}">{{ practicante.nombre }} {{ practicante.apellido }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <textarea class="form-control" rows="3" name="procedimiento" placeholder="Ej: Se le aplica al paciente..."></textarea>
                                 </div>
                             </div>
                         </div>

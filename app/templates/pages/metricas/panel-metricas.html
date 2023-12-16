@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Métricas</h1>
+            <h1 class="m-0">Metricas</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Panel</a></li>
-              <li class="breadcrumb-item active">Paciente</li>
+              <li class="breadcrumb-item active">Metricas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,12 +26,11 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
 
-
-            <section class="section-paciente">
-        
                 <div class="title-item row">
-                    <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Métricas</h3>
+                  <h3 class="" for="rutificador">Métricas</h3>
                 </div>
 
                 <div class="container-fluid">
@@ -40,22 +39,16 @@
                     <!-- Gráfico como img -->
                     <div class="row">
                         <div class="col-6">
-                            <img src="data:image/png;base64,{{ img_base64_motivo }}" alt="Gráfico de dona motivo" class="img-fluid">
+                            <img src="data:image/png;base64,{{ img_motivo }}" alt="Gráfico de dona motivo" class="img-fluid">
                         </div>
                         <div class="col-6">
-                            <img src="data:image/png;base64,{{ img_base64_practicante  }}" alt="Gráfico de dona practicante" class="img-fluid">
+                            <img src="data:image/png;base64,{{ img_practicante  }}" alt="Gráfico de dona practicante" class="img-fluid">
                         </div>
                     </div>
-
-
                 </div>
-        
-        
-            </section>
 
-
-
-
+            </div>
+        </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

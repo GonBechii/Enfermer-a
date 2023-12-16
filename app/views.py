@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from .models import Paciente, Practicante, Atencion
-from .forms import PacienteForm, PracticanteForm, AtencionForm
+from django.contrib.auth.decorators import login_required
+from .models import User, Paciente, Atencion, Perfil
+from .forms import UserForm, PacienteForm, AtencionForm
 import uuid 
 import datetime
-import matplotlib
-matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
@@ -13,7 +13,7 @@ from django.db.models import Count
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+   return render(request, 'signin.html')
 
 def signin(request):
     if request.method == 'GET':
@@ -23,24 +23,32 @@ def signin(request):
 
     if user is None:
         return render(request, 'signin.html', {
-            'error': 'User or password is incorrect'
+            'error': 'Usuario o Contraseña incorrecta!'
         })
     else:
         login(request, user)
-        return redirect('panel-practicante')
-    
+        if user.perfil.id == 'I01':
+            return redirect('panel-practicante')
+        else:
+            return redirect('panel-paciente')
+
+def signout(request):
+    logout(request) 
+    return redirect('signin')  
 #--------- PRACTICANTE -----------# 
 
+@login_required
 def panelPracticante(request):
     if request.method == 'GET':
-        rows = Practicante.objects.all()
+        rows = User.objects.filter(perfil='I02')
         return render(request, 'pages/practicante/panel-practicante.html',{
             'rows': rows
         })
 
+@login_required
 def searchPracticante(request):
     if request.method == 'POST':
-        practicante = Practicante.objects.get(pk=request.POST['rut'])
+        practicante = User.objects.get(pk=request.POST['rut'])
 
         return render(request, 'pages/practicante/panel-practicante.html',{
             'rows': [practicante]
@@ -49,32 +57,45 @@ def searchPracticante(request):
         return render(request, 'pages/practicante/panel-practicante.html')
 
 def panelPracticanteAdd(request):
+    
     if request.method == 'GET':
         return render(request, 'pages/practicante/panel-practicante-add.html')
     else:
-        form = PracticanteForm(request.POST)
+        form = UserForm(request.POST)
+        perfil = Perfil.objects.get(pk="I02")
         if form.is_valid():
-            form.save()
+            practicante = form.save(commit=False)
+            practicante.perfil = perfil
+            practicante.username = request.POST['username']
+            practicante.set_password(request.POST['password'])
+            practicante.save()
             return redirect('panel-practicante')
-        else:
-            # Render de error
-            return render(request, 'pages/practicante/panel-practicante-add.html', {'form': form})
     
 def panelPracticanteEdit(request, rut):
-    user = Practicante.objects.get(pk=rut)
+    user = User.objects.get(pk=rut)
     if request.method == 'GET':
         return render(request, 'pages/practicante/panel-practicante-edit.html',{
-            "user": user
+            "practicante": user
         })
     else:
-        form = PracticanteForm(request.POST, instance=user)
+        form = UserForm(request.POST, instance=user)
         if form.is_valid():
-            form.save()
+            practicante = form.save(commit=False)
+            if request.POST['is_active'] == 'Activo':
+                practicante.is_active = True
+            else:
+                practicante.is_active = False
+            practicante.save()
             return redirect('panel-practicante')
-        return render(request, 'pages/practicante/panel-practicante-edit.html',
-        {
-            "user": user
+        return render(request, 'pages/practicante/panel-practicante-edit.html',{
+            "practicante": user
         })
+    
+def panelPracticanteBloq(request, rut):
+    practicante = User.objects.get(pk=rut)
+    practicante.is_active = 0
+    practicante.save()
+    return redirect('panel-practicante') 
      
 #--------- PACIENTE -----------# 
 def panelPaciente(request):
@@ -102,7 +123,9 @@ def panelPacienteAdd(request):
     else:
         form = PacienteForm(request.POST)
         if form.is_valid():
-            form.save()
+            paciente = form.save(commit=False)
+            paciente.habilitado = True
+            paciente.save()
             return redirect('panel-paciente')
         else:
             print("ERROR: ", form.errors)
@@ -119,12 +142,23 @@ def panelPacienteEdit(request, rut):
     else:
         form = PacienteForm(request.POST, instance=user)
         if form.is_valid():
-            form.save()
+            paciente = form.save(commit=False)
+            if request.POST['habilitado'] == 'Activo':
+                paciente.habilitado = True
+            else:
+                paciente.habilitado = False
+            paciente.save()
             return redirect('panel-paciente')
         return render(request, 'pages/paciente/panel-paciente-edit.html',{
             "user": user
         })
 
+def panelPacienteBloq(request, rut):
+    paciente = Paciente.objects.get(pk=rut)
+    paciente.habilitado = 0
+    paciente.save()
+    return redirect('panel-paciente')
+ 
 #--------- ATENCION -----------# 
 def panelAtencion(request):
     if request.method == 'GET':
@@ -137,15 +171,19 @@ def panelAtencion(request):
     
 def searchAtencion(request):
     if request.method == 'POST':
-        rut = request.POST.get('rut')
-        atencion = Atencion.objects.filter(paciente__rut=rut)
-        return render(request, 'pages/atencion/panel-atencion.html', {'rows': atencion})
+        atencion = Atencion.objects.filter(paciente=request.POST['rut'])
+
+        print("Este es el parametro obtenido: ", request.POST['rut'])
+
+        return render(request, 'pages/atencion/panel-atencion.html',{
+            'rows': atencion
+        })
     else:
         return render(request, 'pages/atencion/panel-atencion.html')
     
 def panelAtencionAdd(request, rut):
     paciente = Paciente.objects.get(pk=rut)
-    practicantes = Practicante.objects.all()
+    practicantes = User.objects.all()
     if request.method == 'GET':
         return render(request, 'pages/atencion/panel-atencion-add.html', {
             'paciente': paciente,
@@ -171,32 +209,49 @@ def panelAtencionAdd(request, rut):
 
 def panelAtencionEdit(request, id):
     atencion = Atencion.objects.get(pk=id)
+    practicantes = User.objects.filter(perfil='I02')
     if request.method == 'GET':
         return render(request, 'pages/atencion/panel-atencion-edit.html',{
-            "atencion": atencion
+            "atencion": atencion,
+            "practicantes": practicantes
         })
     else:
         form = AtencionForm(request.POST, instance=atencion)
         if form.is_valid():
             form.save()
             return redirect('panel-atencion')
-        return render(request, 'pages/atencion/panel-atencion-edit.html',{
-            "atencion": atencion
+        else:
+            print(form.errors)
+            return render(request, 'pages/atencion/panel-atencion-edit.html',{
+                "atencion": atencion
+            })
+        
+def panelAtencionDelete(request, id):
+    atencion = Atencion.objects.get(id=id)
+    atencion.delete()
+    return redirect('panel-atencion')
+
+# -------------- METRICAS --------------- #
+def panelMetricas(request):
+    if request.method == 'GET':
+        cantidad_practicantes = User.objects.count()
+        images = generar_metricas()
+        return render(request, 'pages/metricas/panel-metricas.html', {
+            'img_motivo': images['img_motivo'], 
+            'img_practicante': images['img_practicante']
         })
 
-#--------- Métricas -----------#
-
-def metricasPracticantes(request):
-    if request.method == 'GET':
+# ------------- HELPERS ----------------- #
+def generar_metricas():
         # Obtener la cantidad de atenciones por motivo de consulta
         atenciones_por_motivo = (
             Atencion.objects
-                .values('motivo_consulta')
+                .values('razonIngreso')
                 .annotate(cantidad=Count('id'))
         )
 
         #--Crea un gráfico de dona--#
-        motivos = [item['motivo_consulta'] for item in atenciones_por_motivo]
+        motivos = [item['razonIngreso'] for item in atenciones_por_motivo]
         cantidad_atenciones = [item['cantidad'] for item in atenciones_por_motivo]
 
         # Calcular el total de atenciones
@@ -277,10 +332,12 @@ def metricasPracticantes(request):
         img_base64_practicante = base64.b64encode(img_data_practicante.read()).decode('utf-8')
         plt.close()
 
-        return render(
-            request,
-            'pages/metricas/metricas-panel.html',
-            {'img_base64_motivo': img_base64_motivo, 'img_base64_practicante': img_base64_practicante}
-        )
+        images = {'img_motivo': img_base64_motivo, 'img_practicante': img_base64_practicante}
 
+        return images
 
+        # return render(
+        #     request,
+        #     'pages/metricas/metricas-panel.html',
+        #     {'img_base64_motivo': img_base64_motivo, 'img_base64_practicante': img_base64_practicante}
+        # )

@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Practicante</h1>
+
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,38 +31,44 @@
 
             <section class="section-paciente">
         
-
+              {% if user.perfil.id == 'I01' %}
                 
                 <form class="border border-teritian mx-3 p-3 bg-light" method="POST">
-                    <div class="title-item row">
-                      <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center">Editar Practicante</h3>
+                    <div class="title-item">
+                      <h3 class="blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center">Editar Practicante</h3>
                     </div>
                     {% csrf_token %} 
                      <!-- <h5 class="text-center">Agregar Practicante</h5> -->
                      <div class="mb-3" >
                        <label for="nombre" class="form-label">Nombre</label>
-                       <input type="text" class="form-control" id="nombre" name="nombre" value="{{user.nombre}}">
+                       <input type="text" class="form-control" id="nombre" name="nombre" value="{{practicante.nombre}}">
                      </div>
                      <div class="mb-3" >
                        <label for="rut" class="form-label">Rut</label>
-                       <input type="text" class="form-control" id="rut" name="rut" value="{{user.rut}}">
+                       <input type="text" class="form-control" id="rut" name="rut" value="{{practicante.rut}}">
                      </div>
                      <div class="mb-3" >
                        <label for="nombre" class="form-label">Apellido</label>
-                       <input type="text" class="form-control" id="apellido" name="apellido" value="{{user.apellido}}">
+                       <input type="text" class="form-control" id="apellido" name="apellido" value="{{practicante.apellido}}">
                      </div>
                      <div class="mb-3" >
                        <label for="direccion" class="form-label">Direccion</label>
-                       <input type="text" class="form-control" id="direccion" name="direccion" value="{{user.direccion}}">
+                       <input type="text" class="form-control" id="direccion" name="direccion" value="{{practicante.direccion}}">
                      </div>
-                      <div class="mb-3" >
-                         <label for="correoE" class="form-label">E-mail</label>
-                         <input type="email" class="form-control" id="correoE" name="correoE" >
-                     </div>
-                     <div class="mb-3" >
-                         <label for="passW" class="form-label">Password</label>
-                         <input type="password" class="form-control" id="passW" name="passW" >
-                     </div>
+
+                     <div class="form-group">
+                      <label for="estado">Estado</label>
+                      <select name="is_active" class="form-control">
+                          <option value="" selected disabled>Seleccionar Estado</option>
+                              {% if practicante.is_active %}
+                              <option value="Activo" selected>Activo</option>
+                              <option value="Inactivo">Inactivo</option>
+                              {% else %}
+                              <option value="Activo">Activo</option>
+                              <option value="Inactivo" selected>Inactivo</option>
+                              {% endif %}
+                      </select>
+                    </div>
                      <!-- <div class="mb-3 form-check">
                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -70,7 +76,15 @@
          
                      <button type="submit" class="btn btn-primary px-5">Editar</button>
          
-                   </form>
+                </form>
+
+                {% else %}
+
+                <div class="title-item">
+                  <h3 class="" for="rutificador">No estas autorizado para ver el modulo de edicion</h3>
+                </div>
+
+                {% endif %}
       
             </section>
 

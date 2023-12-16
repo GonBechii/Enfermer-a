@@ -23,14 +23,14 @@
             <a href="/panel/practicante/">Practicante</a>
             <a href="/panel/paciente/">Paciente</a>
             <a href="/panel/atencion/">Atenciones</a>
-            <a href="/panel/metricas/practicantes">Metricas</a>
+            <a href="">Metricas</a>
         </div>
     </section>
 
     <section class="section-paciente">
         
-        <div class="title-item row">
-            <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Practicante</h3>
+        <div class="title-item">
+            <h3 class="blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Practicante</h3>
         </div>
         
         <div class="container">
@@ -51,9 +51,7 @@
                         <th>Rut</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Password</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,16 +60,14 @@
                         <td>{{row.rut}}</td>
                         <td>{{row.nombre}}</td>
                         <td>{{row.apellido}}</td>
-                        <td>{{row.correoE}}</td>
-                        <td>{{row.passW}}</td>
                         <td>
-                            <div>
-                                <a href="{% url 'panel-practicante-edit' rut=row.rut %}" type="button" class="btn btn-primary col-5 text-center">Editar</a>
+                            <div class="">
+                                <a type="button" class="btn btn-primary col-5 text-center">Editar</a>
                                 <a type="button" class="btn btn-primary col-5 text-center">Deshabilitar</a>
                             </div>
                         </td>
-                    </tr>
                     {% endfor %}
+                    </tr>
                 </tbody>
             </table>
 

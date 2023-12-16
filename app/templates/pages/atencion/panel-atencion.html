@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Atencion</h1>
+
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,15 +31,15 @@
 
             <section class="section-paciente">
         
-                <div class="title-item row">
-                    <h3 class="col-12 blancoLetra varianteCuatroBackground mb-3 pt-3 pb-3 text-center" for="rutificador">Atencion</h3>
+                <div class="title-item">
+                    <h3 class="" for="rutificador">Atencion</h3>
                 </div>
                 
-                <div class="container-fluid">
+                <div class="">
                     <div class="header-formulario mt-5 mb-5">
                     </div>
                     <div class="row mb-5 search-box">
-                        <form class="d-flex justify-content-around col-12 mb-3 mt-3 pt-3 pb-3" action="{% url 'search-atencion' %}" method="POST">
+                        <form class="d-flex justify-content-around col-12 mb-3 mt-3 pt-3 pb-3" action="/search/atencion/" method="POST">
                             {% csrf_token %}
                             <input class="bg-white rounded col-6 text-center" type="text" id="rut" name="rut" placeholder="Ingrese Rut" />
                             <button type="submit" class="btn btn-primary px-5">Buscar</button>
@@ -51,35 +51,39 @@
                           <tr>
                               <th>ID</th>
                               <th>Rut</th>
-                              <th>Fecha Inicio</th>
-                              <th>Fecha Termino</th>
+                              <th>Inicio</th>
+                              <th>Termino</th>
                               <th>SBP</th>
                               <th>DBP</th>
-                              <th>Temperatura</th>
+                              <th>Temp</th>
                               <th>Pulso</th>
                               <th>SatO2</th>
-                              <th>Motivo</th>
+                              <th>motivo</th>
                               <th>Actions</th>
                           </tr>
                       </thead>
                       <tbody>
                           {% for row in rows %}
                           <tr>
-                              <td>{{row.id}}</td>
-                              <td>{{row.paciente.rut}}</td>
-                              <td>{{row.fechaInicio}}</td>
-                              <td>{{row.fechaTermino}}</td>
-                              <td>{{row.sbp}}</td>
-                              <td>{{row.dbp}}</td>
-                              <td>{{row.temperatura}}</td>
-                              <td>{{row.pulso}}</td>
-                              <td>{{row.saturacion}}</td>
-                              <td>{{row.motivo_consulta}}</td>
-                              <td>
-                                  <div class="">
-                                      <a type="button" class="btn btn-primary col-5 text-center" href="/panel/atencion/{{row.id}}/edit">Editar</a>
-                                      <a type="button" class="btn btn-primary col-5 text-center">Eliminar</a>
-                                  </div>
+                              <td style="width: 2%;">{{row.id}}</td>
+                              <td style="width: 2%;">{{row.paciente.rut}}</td>
+                              <td style="width: 5%;">{{row.fechaInicio}}</td>
+                              <td style="width: 5%;">{{row.fechaTermino}}</td>
+                              <td style="width: 2%;">{{row.sbp}}</td>
+                              <td style="width: 2%;">{{row.dbp}}</td>
+                              <td style="width: 2%;">{{row.temperatura}}</td>
+                              <td style="width: 2%;">{{row.pulso}}</td>
+                              <td style="width: 2%;">{{row.saturacion}}</td>
+                              <td style="width: 2%;">{{row.razonIngreso}}</td>
+                              <td style="width: 10%;">
+
+                                      <a type="button" class="btn btn-primary col-5 text-center" href="/panel/atencion/{{row.id}}/edit" style="width: 150px;">
+                                        Editar <i class="fas fa-edit" style="display: none;"></i>
+                                      </a>
+                                      <a type="button" class="btn btn-primary col-5 text-center" style="width: 150px;" href="/panel/atencion/{{row.id}}/delete" onclick="return atencionDisable();">
+                                        Eliminar <i class="fas fa-trash" style="display: none;"></i>
+                                      </a>
+
                               </td>
                           {% endfor %}
                           </tr>

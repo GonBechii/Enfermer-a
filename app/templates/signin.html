@@ -43,20 +43,42 @@
             </footer>
         
         </div>
+        
+        {% if error %}
+        <div class="box-alert" id="box-alert">
+            {{ error }}
+            <button  data-dismiss="alert" aria-label="Close" onclick="cerrarAlerta()">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        {% endif %}
+        
+
         <div class="form">
             <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg" /></div>
         
-            <form class="login-form">
-                <input type="text" placeholder="Usuario" />
-                <input type="password" placeholder="Contraseña" />
+            <form class="login-form" method="POST">
+                
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Usuario" />
+                <input type="password" name="password" placeholder="Contraseña" />
                 <!-- <button>login</button> -->
-                <div class="login">
-                    <a  href="/panel/practicante/" >Login</a>
+                <div class="">
+                    <button>Login</button>
                 </div>
-                <p class="message">¿olvidó contraseña? <a href="#"> Recupere acá</a></p>
+                <!-- <p class="message">¿olvidó contraseña? <a href="#"> Recupere acá</a></p> -->
             </form>
         </div>
 
     </div>
 </main>
+
+<script>
+
+function cerrarAlerta(){
+    var alert =  document.getElementById('box-alert');
+    alert.style.display = "none";
+}
+
+</script>
 
